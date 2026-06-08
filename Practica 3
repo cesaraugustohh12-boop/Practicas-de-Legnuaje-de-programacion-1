@@ -1,0 +1,134 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Estudiante
+{
+    public string Nombre { get; set; }
+    public string Apellido { get; set; }
+    public double Matematicas { get; set; }
+    public double Ciencias { get; set; }
+    public double Ingles { get; set; }
+    public double Historia { get; set; }
+    public double Promedio { get; set; }
+    public string Literal { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Estudiante> estudiantes = new List<Estudiante>();
+
+        string opcion;
+
+        do
+        {
+            Console.Clear();
+
+            Estudiante e = new Estudiante();
+
+            Console.WriteLine("===== REGISTRO DE ESTUDIANTE =====\n");
+
+            Console.Write("Nombre: ");
+            e.Nombre = Console.ReadLine();
+
+            Console.Write("Apellido: ");
+            e.Apellido = Console.ReadLine();
+
+            Console.Write("Matemáticas: ");
+            e.Matematicas = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Ciencias: ");
+            e.Ciencias = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Inglés: ");
+            e.Ingles = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Historia: ");
+            e.Historia = Convert.ToDouble(Console.ReadLine());
+
+            e.Promedio =
+                (e.Matematicas +
+                 e.Ciencias +
+                 e.Ingles +
+                 e.Historia) / 4;
+
+            if (e.Promedio >= 90)
+                e.Literal = "A";
+            else if (e.Promedio >= 80)
+                e.Literal = "B";
+            else if (e.Promedio >= 70)
+                e.Literal = "C";
+            else
+                e.Literal = "D";
+
+            estudiantes.Add(e);
+
+            Console.Write("\n¿Desea agregar otro estudiante? (S/N): ");
+            opcion = Console.ReadLine().ToUpper();
+
+        } while (opcion == "S");
+
+        // Ordenar por apellido
+        estudiantes = estudiantes.OrderBy(x => x.Apellido).ToList();
+
+        // Contadores
+        int totalA = 0;
+        int totalB = 0;
+        int totalC = 0;
+        int totalD = 0;
+
+        Console.Clear();
+
+        Console.WriteLine("\t\tCOLEGIO DIOS ES BUENO");
+        Console.WriteLine("\t\tCalificaciones del Cuatrimestre\n");
+
+        Console.WriteLine("------------------------------------------------------------------------------------------------------");
+        Console.WriteLine("Nombre\tApellido\tMat\tCien\tIng\tHist\tPromedio\tLiteral");
+        Console.WriteLine("------------------------------------------------------------------------------------------------------");
+
+        foreach (Estudiante e in estudiantes)
+        {
+            Console.WriteLine(
+                $"{e.Nombre}\t{e.Apellido}\t\t" +
+                $"{e.Matematicas}\t" +
+                $"{e.Ciencias}\t" +
+                $"{e.Ingles}\t" +
+                $"{e.Historia}\t" +
+                $"{e.Promedio:F2}\t\t" +
+                $"{e.Literal}"
+            );
+
+            switch (e.Literal)
+            {
+                case "A":
+                    totalA++;
+                    break;
+
+                case "B":
+                    totalB++;
+                    break;
+
+                case "C":
+                    totalC++;
+                    break;
+
+                default:
+                    totalD++;
+                    break;
+            }
+        }
+
+        Console.WriteLine("\n==================================");
+        Console.WriteLine("TOTALES");
+        Console.WriteLine("==================================");
+        Console.WriteLine($"Estudiantes en A: {totalA}");
+        Console.WriteLine($"Estudiantes en B: {totalB}");
+        Console.WriteLine($"Estudiantes en C: {totalC}");
+        Console.WriteLine($"Estudiantes Reprobados: {totalD}");
+
+        Console.WriteLine("\nPresione una tecla para salir...");
+        Console.ReadKey();
+    }
+}
