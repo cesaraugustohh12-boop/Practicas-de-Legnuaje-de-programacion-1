@@ -1,0 +1,101 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> nombres = new List<string>();
+        List<string> apellidos = new List<string>();
+        List<double> matematicas = new List<double>();
+        List<double> ciencias = new List<double>();
+        List<double> ingles = new List<double>();
+        List<double> historia = new List<double>();
+        List<double> promedios = new List<double>();
+        List<string> literales = new List<string>();
+
+        string opcion;
+
+        do
+        {
+            Console.Clear();
+
+            Console.WriteLine("===== REGISTRO DE ESTUDIANTE =====\n");
+
+            Console.Write("Nombre: ");
+            string nombre = Console.ReadLine();
+
+            Console.Write("Apellido: ");
+            string apellido = Console.ReadLine();
+
+            Console.Write("Calificación de Matemáticas: ");
+            double mat = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Calificación de Ciencias: ");
+            double cie = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Calificación de Inglés: ");
+            double ing = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Calificación de Historia: ");
+            double his = Convert.ToDouble(Console.ReadLine());
+
+            double promedio = (mat + cie + ing + his) / 4;
+
+            string literal;
+
+            if (promedio >= 90)
+                literal = "A";
+            else if (promedio >= 80)
+                literal = "B";
+            else if (promedio >= 70)
+                literal = "C";
+            else
+                literal = "D";
+
+            nombres.Add(nombre);
+            apellidos.Add(apellido);
+            matematicas.Add(mat);
+            ciencias.Add(cie);
+            ingles.Add(ing);
+            historia.Add(his);
+            promedios.Add(promedio);
+            literales.Add(literal);
+
+            Console.Write("\n¿Desea agregar otro estudiante? (S/N): ");
+            opcion = Console.ReadLine().ToUpper();
+
+        } while (opcion == "S");
+
+        Console.Clear();
+
+        Console.WriteLine("\t\tCOLEGIO DIOS ES BUENO");
+        Console.WriteLine("\t\tCalificaciones del Cuatrimestre\n");
+
+        Console.WriteLine("====================================================================================================");
+        Console.WriteLine("Nombre\tApellido\tMat\tCien\tIng\tHist\tPromedio\tLiteral");
+        Console.WriteLine("====================================================================================================");
+
+        for (int i = 0; i < nombres.Count; i++)
+        {
+            Console.WriteLine(
+                $"{nombres[i]}\t{apellidos[i]}\t\t" +
+                $"{matematicas[i]}\t" +
+                $"{ciencias[i]}\t" +
+                $"{ingles[i]}\t" +
+                $"{historia[i]}\t" +
+                $"{promedios[i]:F2}\t\t" +
+                $"{literales[i]}"
+            );
+        }
+
+        Console.WriteLine("\nEscala de Literales:");
+        Console.WriteLine("A = Promedio >= 90");
+        Console.WriteLine("B = Promedio >= 80 y < 90");
+        Console.WriteLine("C = Promedio >= 70 y < 80");
+        Console.WriteLine("D = Promedio < 70");
+
+        Console.WriteLine("\nPresione cualquier tecla para salir...");
+        Console.ReadKey();
+    }
+}
