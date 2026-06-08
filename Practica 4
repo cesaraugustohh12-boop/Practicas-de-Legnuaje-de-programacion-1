@@ -1,0 +1,348 @@
+using System;
+using System.Collections.Generic;
+
+namespace Biblioteca
+{
+    class Libro
+    {
+        public string Titulo;
+        public string Autor;
+        public bool Disponible = true;
+    }
+
+    class Usuario
+    {
+        public string Nombre;
+        public List<Libro> LibrosPrestados = new List<Libro>();
+    }
+
+    class Prestamo
+    {
+        public Libro Libro;
+        public Usuario Usuario;
+        public DateTime FechaPrestamo;
+    }
+
+    class Program
+    {
+        static List<Libro> libros = new List<Libro>();
+        static List<Usuario> usuarios = new List<Usuario>();
+        static List<Prestamo> prestamos = new List<Prestamo>();
+
+        const int LIMITE_PRESTAMOS = 3;
+        const double MULTA_POR_DIA = 10.0;
+
+        static void Main(string[] args)
+        {
+            int opcion = 0;
+
+            do
+            {
+                Console.Clear();
+
+                Console.WriteLine("===== SISTEMA DE BIBLIOTECA =====");
+                Console.WriteLine("1. Registrar libro");
+                Console.WriteLine("2. Registrar usuario");
+                Console.WriteLine("3. Prestar libro");
+                Console.WriteLine("4. Devolver libro");
+                Console.WriteLine("5. Mostrar información");
+                Console.WriteLine("6. Salir");
+
+                Console.Write("\nSeleccione una opción: ");
+
+                int.TryParse(Console.ReadLine(), out opcion);
+
+                switch (opcion)
+                {
+                    case 1:
+                        RegistrarLibro();
+                        break;
+
+                    case 2:
+                        RegistrarUsuario();
+                        break;
+
+                    case 3:
+                        PrestarLibro();
+                        break;
+
+                    case 4:
+                        DevolverLibro();
+                        break;
+
+                    case 5:
+                        MostrarInformacion();
+                        break;
+
+                    case 6:
+                        Console.WriteLine("\nSaliendo...");
+                        break;
+
+                    default:
+                        Console.WriteLine("\nOpción inválida.");
+                        Console.ReadKey();
+                        break;
+                }
+
+            } while (opcion != 6);
+        }
+
+        static void RegistrarLibro()
+        {
+            Console.Clear();
+
+            Libro libro = new Libro();
+
+            Console.Write("Título del libro: ");
+            libro.Titulo = Console.ReadLine();
+
+            Console.Write("Autor del libro: ");
+            libro.Autor = Console.ReadLine();
+
+            libros.Add(libro);
+
+            Console.WriteLine("\nLibro registrado correctamente.");
+            Console.ReadKey();
+        }
+
+        static void RegistrarUsuario()
+        {
+            Console.Clear();
+
+            Usuario usuario = new Usuario();
+
+            Console.Write("Nombre del usuario: ");
+            usuario.Nombre = Console.ReadLine();
+
+            usuarios.Add(usuario);
+
+            Console.WriteLine("\nUsuario registrado correctamente.");
+            Console.ReadKey();
+        }
+
+        static void PrestarLibro()
+        {
+            Console.Clear();
+
+            if (usuarios.Count == 0 || libros.Count == 0)
+            {
+                Console.WriteLine("Debe registrar usuarios y libros primero.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("USUARIOS:");
+
+            for (int i = 0; i < usuarios.Count; i++)
+            {
+                Console.WriteLine((i + 1) + ". " + usuarios[i].Nombre);
+            }
+
+            Console.Write("\nSeleccione usuario: ");
+            int usuarioIndex;
+
+            if (!int.TryParse(Console.ReadLine(), out usuarioIndex))
+                return;
+
+            usuarioIndex--;
+
+            if (usuarioIndex < 0 || usuarioIndex >= usuarios.Count)
+            {
+                Console.WriteLine("Usuario inválido.");
+                Console.ReadKey();
+                return;
+            }
+
+            Usuario usuario = usuarios[usuarioIndex];
+
+            if (usuario.LibrosPrestados.Count >= LIMITE_PRESTAMOS)
+            {
+                Console.WriteLine("El usuario alcanzó el límite de préstamos.");
+                Console.ReadKey();
+                return;
+            }
+
+            List<Libro> disponibles = new List<Libro>();
+
+            foreach (Libro libro in libros)
+            {
+                if (libro.Disponible)
+                {
+                    disponibles.Add(libro);
+                }
+            }
+
+            if (disponibles.Count == 0)
+            {
+                Console.WriteLine("No hay libros disponibles.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("\nLIBROS DISPONIBLES:");
+
+            for (int i = 0; i < disponibles.Count; i++)
+            {
+                Console.WriteLine((i + 1) + ". " + disponibles[i].Titulo);
+            }
+
+            Console.Write("\nSeleccione libro: ");
+            int libroIndex;
+
+            if (!int.TryParse(Console.ReadLine(), out libroIndex))
+                return;
+
+            libroIndex--;
+
+            if (libroIndex < 0 || libroIndex >= disponibles.Count)
+            {
+                Console.WriteLine("Libro inválido.");
+                Console.ReadKey();
+                return;
+            }
+
+            Libro seleccionado = disponibles[libroIndex];
+
+            seleccionado.Disponible = false;
+
+            usuario.LibrosPrestados.Add(seleccionado);
+
+            Prestamo prestamo = new Prestamo();
+            prestamo.Libro = seleccionado;
+            prestamo.Usuario = usuario;
+            prestamo.FechaPrestamo = DateTime.Now;
+
+            prestamos.Add(prestamo);
+
+            Console.WriteLine("\nLibro prestado correctamente.");
+            Console.WriteLine("Fecha de préstamo: " +
+                              prestamo.FechaPrestamo.ToString("dd/MM/yyyy"));
+
+            Console.ReadKey();
+        }
+
+        static void DevolverLibro()
+        {
+            Console.Clear();
+
+            if (prestamos.Count == 0)
+            {
+                Console.WriteLine("No existen préstamos.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("PRÉSTAMOS ACTIVOS:");
+
+            for (int i = 0; i < prestamos.Count; i++)
+            {
+                Console.WriteLine((i + 1) + ". " +
+                                  prestamos[i].Libro.Titulo +
+                                  " - " +
+                                  prestamos[i].Usuario.Nombre);
+            }
+
+            Console.Write("\nSeleccione préstamo: ");
+
+            int indice;
+
+            if (!int.TryParse(Console.ReadLine(), out indice))
+                return;
+
+            indice--;
+
+            if (indice < 0 || indice >= prestamos.Count)
+            {
+                Console.WriteLine("Selección inválida.");
+                Console.ReadKey();
+                return;
+            }
+
+            Prestamo prestamo = prestamos[indice];
+
+            int dias = (DateTime.Now - prestamo.FechaPrestamo).Days;
+
+            if (dias > 7)
+            {
+                double multa = (dias - 7) * MULTA_POR_DIA;
+
+                Console.WriteLine("\nDías de retraso: " + (dias - 7));
+                Console.WriteLine("Multa generada: RD$ " + multa);
+            }
+            else
+            {
+                Console.WriteLine("\nSin multa.");
+            }
+
+            prestamo.Libro.Disponible = true;
+
+            prestamo.Usuario.LibrosPrestados.Remove(prestamo.Libro);
+
+            prestamos.Remove(prestamo);
+
+            Console.WriteLine("\nLibro devuelto correctamente.");
+            Console.ReadKey();
+        }
+
+        static void MostrarInformacion()
+        {
+            Console.Clear();
+
+            Console.WriteLine("===== LIBROS =====\n");
+
+            foreach (Libro libro in libros)
+            {
+                Console.WriteLine("Título: " + libro.Titulo);
+                Console.WriteLine("Autor: " + libro.Autor);
+                Console.WriteLine("Estado: " +
+                    (libro.Disponible ? "Disponible" : "No Disponible"));
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("===== USUARIOS =====\n");
+
+            foreach (Usuario usuario in usuarios)
+            {
+                Console.WriteLine("Usuario: " + usuario.Nombre);
+
+                if (usuario.LibrosPrestados.Count == 0)
+                {
+                    Console.WriteLine("Libros prestados: Ninguno");
+                }
+                else
+                {
+                    foreach (Libro libro in usuario.LibrosPrestados)
+                    {
+                        Console.WriteLine("- " + libro.Titulo);
+                    }
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("===== PRÉSTAMOS ACTIVOS =====\n");
+
+            foreach (Prestamo prestamo in prestamos)
+            {
+                int dias = (DateTime.Now - prestamo.FechaPrestamo).Days;
+
+                double multa = 0;
+
+                if (dias > 7)
+                {
+                    multa = (dias - 7) * MULTA_POR_DIA;
+                }
+
+                Console.WriteLine("Usuario: " + prestamo.Usuario.Nombre);
+                Console.WriteLine("Libro: " + prestamo.Libro.Titulo);
+                Console.WriteLine("Fecha de préstamo: " +
+                                  prestamo.FechaPrestamo.ToString("dd/MM/yyyy"));
+                Console.WriteLine("Días transcurridos: " + dias);
+                Console.WriteLine("Multa actual: RD$ " + multa);
+                Console.WriteLine();
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
