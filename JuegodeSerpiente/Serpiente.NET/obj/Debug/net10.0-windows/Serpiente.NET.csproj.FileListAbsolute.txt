@@ -1,0 +1,14 @@
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\bin\Debug\net10.0-windows\Serpiente.NET.exe
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\bin\Debug\net10.0-windows\Serpiente.NET.deps.json
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\bin\Debug\net10.0-windows\Serpiente.NET.runtimeconfig.json
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\bin\Debug\net10.0-windows\Serpiente.NET.dll
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\bin\Debug\net10.0-windows\Serpiente.NET.pdb
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\Serpiente.NET.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\Serpiente.NET.AssemblyInfoInputs.cache
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\Serpiente.NET.AssemblyInfo.cs
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\Serpiente.NET.csproj.CoreCompileInputs.cache
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\Serpiente.NET.dll
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\refint\Serpiente.NET.dll
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\Serpiente.NET.pdb
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\Serpiente.NET.genruntimeconfig.cache
+C:\Users\CESAR THE BOSS\Downloads\codigos\newSerpiente.NET\Serpiente.NET\obj\Debug\net10.0-windows\ref\Serpiente.NET.dll
