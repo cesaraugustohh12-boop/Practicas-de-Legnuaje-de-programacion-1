@@ -1,0 +1,14 @@
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\bin\Debug\net10.0-windows\PuntoVentaForms.exe
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\bin\Debug\net10.0-windows\PuntoVentaForms.deps.json
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\bin\Debug\net10.0-windows\PuntoVentaForms.runtimeconfig.json
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\bin\Debug\net10.0-windows\PuntoVentaForms.dll
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\bin\Debug\net10.0-windows\PuntoVentaForms.pdb
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\PuntoVentaForms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\PuntoVentaForms.AssemblyInfoInputs.cache
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\PuntoVentaForms.AssemblyInfo.cs
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\PuntoVentaForms.csproj.CoreCompileInputs.cache
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\PuntoVentaForms.dll
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\refint\PuntoVentaForms.dll
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\PuntoVentaForms.pdb
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\PuntoVentaForms.genruntimeconfig.cache
+C:\Users\LAB A.LABA03\Downloads\New folder\PuntoVentaForms\obj\Debug\net10.0-windows\ref\PuntoVentaForms.dll
